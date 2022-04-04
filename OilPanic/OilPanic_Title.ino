@@ -9,18 +9,20 @@ void title() {
 
     Sprites::drawOverwrite(0, 0, Images::Title, 0);
 
+    uint8_t eyeFrame = 0;
+
     switch (counter) {
 
         case 60 ... 63:
-            Sprites::drawOverwrite(81, 18, Images::Title_Eyes, 0);
+            eyeFrame = 0;
             break;
 
         case 64 ... 67:
-            Sprites::drawOverwrite(81, 18, Images::Title_Eyes, 1);
+            eyeFrame = 1;
             break;
 
         case 68 ... 71:
-            Sprites::drawOverwrite(81, 18, Images::Title_Eyes, 2);
+            eyeFrame = 2;
             break;
 
 
@@ -28,6 +30,9 @@ void title() {
             counter = 0;
             break;
     }
+
+    if((counter >= 60) && (counter <= 71))
+        Sprites::drawOverwrite(81, 18, Images::Title_Eyes, eyeFrame);
 
     if (arduboy.justPressed(A_BUTTON)) { 
 
